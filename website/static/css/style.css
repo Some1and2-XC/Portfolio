@@ -1,0 +1,17 @@
+/*General Styles*/
+
+.min-size {
+	min-height: calc(100vh - 176px);
+}
+
+/*Homepage Styles*/
+
+.Homepage-background {
+	height: calc(100vh - 56px);
+}
+
+/*Elements*/
+
+h1 {
+	font-size: 5rem !important;
+}
