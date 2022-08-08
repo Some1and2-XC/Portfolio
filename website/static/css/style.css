@@ -54,6 +54,10 @@ h1 {
 		text-align: center;
 	}
 
+	.Homepage-backgound-about-button {
+		visibility: hidden;
+	}
+
 	.Homepage-about {
 		visibility: hidden;
 	}

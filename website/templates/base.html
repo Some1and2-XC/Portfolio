@@ -80,10 +80,10 @@
 			{% endif %}
 		{% endwith %}
 
-		<div class="min-size">
+		<main role="main" class="flex-shrink-0 min-size">
 			{% block content %}
 			{% endblock %}
-		</div>
+		</main>
 
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -107,7 +107,7 @@
 		></script>
 
 		<!-- Footer -->
-		<footer class="footer py-5 bg-dark">
+		<footer class="footer mt-auto py-5 bg-dark">
 			<div class="container"><p class="m-0 text-center text-white">Copyright &copy; @some1and2 2022</p></div>
 		</footer>
 	</body>
