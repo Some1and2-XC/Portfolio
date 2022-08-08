@@ -5,13 +5,64 @@
 
 	<section>
 		<div class="Homepage-background" style="background-image: url({{ url_for('static', filename='Images/homepage-background.jpg') }})">
-			<div class="d-flex flex-row" style="padding: 6rem; color: white; width: 25%;">
-				<h1>Portfolio for @some1and2</h1>
+			<div class="d-flex flex-column" style="padding: 100px; padding-top: calc(30vh - 50px); color: white;">
+				<div class="d-flex flex-row">
+					<h1 class="color-grad">Portfolio for</h1>
+				</div>
+				<div class="d-flex flex-row">
+					<h1 class="color-grad">@some1and2</h1>
+				</div>
+				<div class="btn-group" style="margin-top: 5vh; width: 25vw">
+					<a href="#about" role="button" class="btn btn-outline-info">About</a>
+					<a href="#info" role="button" class="btn btn-outline-info">Info</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="about" class="Homepage-about">
+		<div class="d-flex flex-column" align="center" style="background-color: #d9d9d9;">
+			<div class="top-margin">
+				<h1>
+					About
+				</h1>
+			</div>
+			<div class="d-flex flex-row justify-content-between" style="width: 100%; padding: 2rem 6rem 0px 6rem;" align="center">
+				<div class="d-flex flex-column Homepage-about-box">
+					<div align="center">
+						<span class="fa fa-stack fa-3x">
+							<p class="fa-solid fa-circle fa-stack-2x Homepage-about-icon-lg"></p>
+							<p class="fa-solid fa-map-marker fa-stack-1x Homepage-about-icon-sm"></p>
+						</span>
+					</div>
+					<h3>From the small island nation of Nova-Scotia</h3>
+				</div>
+				<div class="d-flex flex-column Homepage-about-box">
+					<div align="center">
+						<span class="fa fa-stack fa-3x">
+							<p class="fa-solid fa-circle fa-stack-2x Homepage-about-icon-lg"></p>
+							<p class="fa-solid fa-code fa-stack-1x Homepage-about-icon-sm"></p>
+						</span>
+					</div>
+					<h3>Adept with <code>.py .html .css</code></h3>
+				</div>
+				<div class="d-flex flex-column Homepage-about-box">
+					<div align="center">
+						<span class="fa fa-stack fa-3x">
+							<p class="fa-solid fa-circle fa-stack-2x Homepage-about-icon-lg"></p>
+							<p class="fa-solid fa-folder fa-stack-1x Homepage-about-icon-sm"></p>
+						</span>
+					</div>
+					<h3>Portfolio for Programs written by @some1and2</h3>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="info" hidden>
+		<div style="height: 100rem; padding: 35px">
+			<div class="top-margin">
+				<h1>Info</h1>
 			</div>
 		</div>
 	</section>
 
-	<h1 align="center">
-		Notes
-	</h1>
 {% endblock %}

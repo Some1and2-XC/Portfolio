@@ -4,14 +4,57 @@
 	min-height: calc(100vh - 176px);
 }
 
+.color-grad {
+	background-image: linear-gradient(90deg, #84ff82, #38b9ff);
+	background-attachment: fixed;
+}
+
+.top-margin {
+	margin-top: 8rem;
+}
+
 /*Homepage Styles*/
 
 .Homepage-background {
 	height: calc(100vh - 56px);
 }
 
+.Homepage-about {
+
+}
+
+.Homepage-about-box {
+	width: 25vw;
+	height: 15vw;
+}
+
+.Homepage-about-icon-lg {
+	color: black;
+	font-size: 3em;
+}
+
+.Homepage-about-icon-sm {
+	color: white;
+	font-size: 1em;
+}
+
 /*Elements*/
 
 h1 {
 	font-size: 5rem !important;
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 3rem !important;
+		text-align: center;
+	}
+
+	.Homepage-background {
+		text-align: center;
+	}
+
+	.Homepage-about {
+		visibility: hidden;
+	}
 }
