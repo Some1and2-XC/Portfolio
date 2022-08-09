@@ -59,3 +59,7 @@ def RunKyros(args: dict, BonusSet = {}):
 	os.chdir("../..")
 
 	return "/".join(f"Session\\{f.FileName} - #{f.count-1}.png".split("\\")), f.BoxRange
+
+def RunAudown(args: dict):
+	# Function for running `Audown`
+	...

@@ -1,0 +1,30 @@
+{% extends "portfolio-program-000-base.html" %}
+{% block title %}Music Downloader{% endblock %}
+{% block program_title %}A Program For Downloading & Tagging Audio{% endblock %}
+{% block program_github_url %}https://github.com/Some1and2-XC/Auto-Audio-Downloader{% endblock %}
+{% block program_color %}#ffcac7{% endblock %}
+
+{% block program_content %}
+	<div align="center">
+		<h2>Music Downloader</h2>
+		<div class="d-flex flex-row justify-content-center basic-border" style="padding: 0px;">
+			<form method="POST" style="margin: 3rem;">
+				<div class="input-group">
+					<input type="text" name="song" placeholder="Enter Song Name">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</div>
+				</div>
+			</form>
+
+			<form method="POST" style="margin: 3rem;">
+				<div class="input-group">
+					<input type="text" name="album" placeholder="Enter Album Name">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

@@ -11,6 +11,7 @@ from flask import Blueprint, render_template, request, flash, url_for
 from .. import db
 from ..models.models import User, Kyros
 from ..services import RunKyros
+from ..services import RunAudown
 
 
 portfolio_views = Blueprint("portfolio_views", __name__)
@@ -75,5 +76,19 @@ def kyros_demo():
 
 @portfolio_views.route("/mnist", methods = ["GET"])
 def mnist_demo():
-	# Function for mnist classification endpoint
+	# Function for mnist classification demo
 	return render_template("portfolio-program-002-mnist.html", user = current_user)
+
+@portfolio_views.route("/audown", methods = ["GET", "POST"])
+def audown_demo():
+	# Function for audown demo
+
+	if request.method == "POST":
+
+		args = {}
+		if "album" in request.form: args["album"] = request.form["album"]
+		if "song" in request.form: args["song"] = request.form["song"]
+
+
+
+	return render_template("portfolio-program-003-audown.html", user = current_user)

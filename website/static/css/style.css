@@ -13,6 +13,18 @@
 	margin-top: 8rem;
 }
 
+.basic-border {
+	width: 95%;
+	border-width: 1px;
+	border-color: black;
+	border-collapse: collapse;
+	border-style: solid;
+	border-radius: 15px;
+	padding: 2rem;
+	margin-bottom: 10rem;
+	background-color: white;
+}
+
 /*Elements*/
 
 h1 {

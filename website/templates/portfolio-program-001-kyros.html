@@ -7,7 +7,7 @@
 {% block program_content %}
 	<div align="center">
 		{% if image %}
-			<form method="POST" style="width: 95%; border-width: 2px; border-color: black; border-collapse: collapse; border-style: solid; padding: 2rem; margin-bottom: 10rem; ">
+			<form method="POST" class="basic-border">
 				{% if user.is_authenticated %}
 					<h3>Image Settings</h3>
 					<code>{{ user.Kyros_Settings[0].settings }}</code>
@@ -27,7 +27,7 @@
 		{% endif %}
 		<h2>Input Panel</h2>
 		<hr>
-		<form method="POST" style="width: 95%; border-width: 2px; border-color: black; border-collapse: collapse; border-style: solid; padding: 2rem">
+		<form method="POST" class="basic-border">
 			<h3>Generator Settings</h3>
 
 			<div class="input-group">
