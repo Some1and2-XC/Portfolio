@@ -1,9 +1,158 @@
 {% extends "portfolio-program-000-base.html" %}
 {% block title %}Kyros{% endblock %}
+{% block program_title %}Kyros - A Fractal Generator{% endblock %}
+{% block program_github_url %}https://github.com/Some1and2-XC/Kyros{% endblock %}
+{% block program_color %}#d9fff9{% endblock %}
 
-{% block program_title %}
-This is the kryos page
-{% endblock %}
-{% block program_color %}
-	#d4fbff
+{% block program_content %}
+	<div align="center">
+		{% if image %}
+			<form method="POST" style="width: 95%; border-width: 2px; border-color: black; border-collapse: collapse; border-style: solid; padding: 2rem; margin-bottom: 10rem; ">
+				<div class="d-flex flex-row justify-content-center" style="padding: 2rem;">
+					<div class="d-flex flex-column">
+						<input type="range" id="cj" name="vert" value="0" min="-50" max="50" orient="vertical" style="height: calc(100% - 21px">
+						<div style="height: 20.8px"></div>
+					</div>
+					<div class="d-flex flex-column">
+						<img src="{{ url_for('static', filename=image) }}" alt="...">
+						<input type="range" name="hori" value="0" min="-50" max="50">
+					</div>
+				</div>
+				<button class="btn btn-primary" type="submit" value="Submit">Zoom</button>
+			</form>
+		{% endif %}
+		<h2>Input Panel</h2>
+		<hr>
+		<form method="POST" style="width: 95%; border-width: 2px; border-color: black; border-collapse: collapse; border-style: solid; padding: 2rem">
+			<h3>Generator Settings</h3>
+
+			<div class="input-group">
+				<!-- General Type -->
+				<div class="input-group mb3">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="IsJulia">General Type</label>
+					</div>
+					<select class="custom-select" id="IsJulia" name="IsJulia">
+						<option value="0">Mandelbrot Set</option>
+						<option value="1">Julia Set</option>
+					</select>
+				</div>
+
+				<!-- CI & CJ -->
+				<div class="w-100" align="right">
+					<div class="input-group mb3">
+						<div class="input-group-prepend">
+							<label class="input-group-text">Real Constant Value (x100)</label>
+						</div>
+						<div class="custom-select">
+							<input type="range" id="cj" name="cj" value="0" min="-100" max="100" oninput="this.nextElementSibling.value = this.value">
+							<output>0</output>
+						</div>
+					</div>
+					<div class="input-group mb3">
+						<div class="input-group-prepend">
+							<label class="input-group-text">Imaginary Constant Value (x100)</label>
+						</div>
+						<div class="custom-select">
+							<input type="range" id="ci" name="ci" value="0" min="-100" max="100" oninput="this.nextElementSibling.value = this.value">
+							<output>0</output>
+						</div>
+					</div>
+				</div>
+
+				<!-- GenType + ST/TD -->
+				<div class="input-group">
+					<div class="input-group mb3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="GenType1">Gen Type</label>
+						</div>
+
+						<select class="custom-select" id="GenType1" name="GenType1">
+							<option value="SD">Standard</option>
+							<option value="R">Rabbit</option>
+							<option value="BS">Absolute Value (Burning Ship)</option>
+							<option value="ABR">Absolute Rabbit</option>
+						</select>
+					</div>
+
+					<div class="input-group mb3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="GenType2">SD / TD</label>
+						</div>
+						<select class="custom-select" id="GenType2" name="GenType2">
+							<!-- <option selected>Choose...</option> -->
+							<option value="IT">Itteration</option>
+							<option value="TD">Travel Distance</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- MaxI -->
+				<div class="input-group mb3" align="right">
+					<div class="input-group-prepend">
+						<label class="input-group-text">Maximum Amount of Itterations</label>
+					</div>
+					<div class="custom-select">
+						<input type="range" id="MaxI" name="MaxI" value="10" min="3" max="10" oninput="this.nextElementSibling.value = 2 ** this.value">
+						<output>1024</output>
+					</div>
+				</div>
+
+				<!-- SizeX -->
+				<div class="input-group mb3" align="right">
+					<div class="input-group-prepend">
+						<label class="input-group-text">Image Width (px)</label>
+					</div>
+					<div class="custom-select">
+						<input type="range" id="SizeX" name="SizeX" value="8" min="3" max="10" oninput="this.nextElementSibling.value = 2 ** this.value">
+						<output>256</output>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<h3>Color Settings</h3>
+
+			<div class="input-group">
+				<!-- ColorStyle -->
+				<div class="input-group mb3">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="ColorStyle">Style of Coloring</label>
+					</div>
+					<select class="custom-select" id="ColorStyle" name="ColorStyle">
+						<option value="rotational">Rotational</option>
+						<option value="sinusoidal">Sinusoidal</option>
+					</select>
+				</div>
+
+				<!-- ShadowStyle -->
+				<div class="input-group mb3">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="ShadowStyle">Style of Shadows</label>
+					</div>
+					<select class="custom-select" id="ShadowStyle" name="ShadowStyle">
+						<option value="none">None</option>
+						<option value="minimal">Minimal</option>
+						<option value="modulus">Modulus</option>
+					</select>
+				</div>
+
+				<!-- RateOfColorChange -->
+				<div class="input-group mb3" align="right">
+					<div class="input-group-prepend">
+						<label class="input-group-text">Rate of Color Change (Degrees of Color Change per Itteration)</label>
+					</div>
+					<div class="custom-select">
+						<input type="range" id="RateOfColorChange" name="RateOfColorChange" value="2" min="1" max="4" oninput="this.nextElementSibling.value = 3 ** this.value">
+						<output>9</output>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<button class="btn btn-primary" type="submit" value="Submit" align="left">Generate</button>
+		</form>
+	</div>
+
 {% endblock %}

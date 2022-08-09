@@ -2,12 +2,18 @@
 
 {% block content %}
 	<div class="d-flex flex-row justify-content-between">
-		<section class="w-100">
-			1
+		<section class="Program-padding w-100">
+			{% block program_content %}{% endblock %}
 		</section>
-		<section class="h-100" style="background-color: {% block program_color %}{% endblock %}; width: 20vw;">
-			{% block program_title %}
-			{% endblock %}
+		<section class="Program-padding" style="background-color: {% block program_color %}{% endblock %}; width: 30vw;">
+			<h2><code>{% block program_title %}{% endblock %}</code></h2>
+			<hr>
+			<ul>
+				<li>
+					<a href="{% block program_github_url %}{% endblock %}">Github</a>
+				</li>
+			</ul>
+			<hr>
 		</section>
 	</div>
 {% endblock %}

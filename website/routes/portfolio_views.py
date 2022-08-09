@@ -6,12 +6,11 @@ import json
 
 from flask_login import login_required, current_user
 
-from flask import Blueprint # Blueprints lets you split up views into multiple files cleanly
-from flask import render_template
-from flask import request
-from flask import flash
+from flask import Blueprint, render_template, request, flash, url_for
 
 from .. import db
+from ..models.models import User, Kyros
+from ..services import RunKyros
 
 
 portfolio_views = Blueprint("portfolio_views", __name__)
@@ -33,6 +32,43 @@ def home():
 
 	return render_template("portfolio-base-1-home.html", user = current_user) # passes current_user to home.html
 
-@portfolio_views.route("/kyros", methods = ["GET"])
+@portfolio_views.route("/kyros", methods = ["GET", "POST"])
 def kyros_demo():
-	return render_template("portfolio-program-001-kyros.html", user = current_user)
+	# Endpoint for the kyros demo
+
+	img = None
+
+	if request.method == "POST":
+		# For Form Submissions
+
+		# Changes the Values Such that they Match with the displayed Values
+		formdata = dict(request.form)
+		if "vert" in formdata:
+			if current_user.is_authenticated:
+				formdata = json.loads(current_user.Kyros_Settings[0].settings)
+				BonusSettings = {
+					"turtle": True,
+					"x": float(request.form["hori"]),
+					"y": float(request.form["vert"]),
+					"first": False
+				}
+
+				img, BoxRange = RunKyros(args = formdata, BonusSet = BonusSettings)
+
+				formdata["BoxRange"] = BoxRange
+
+				current_user.UpdateKyrosSettings(json.dumps(formdata))
+				
+			else:
+				flash("Not Signed IN!")
+		else:
+			# Cleans up the values a bit to match the displayed values from html
+			for key, power in [("MaxI", 2), ("SizeX", 2), ("RateOfColorChange", 3)]:
+				formdata[key] = power ** float(formdata[key])
+			for key, divisor in [("ci", 100), ("cj", 100)]:
+				formdata[key] = float(formdata[key]) / divisor
+			if current_user.is_authenticated:
+				current_user.UpdateKyrosSettings(json.dumps(formdata))
+			img, _ = RunKyros(dict(formdata))
+
+	return render_template("portfolio-program-001-kyros.html", user = current_user, image=img)

@@ -11,6 +11,8 @@ website_url = "localhost:80"
 db = SQLAlchemy()
 DBNAME = "database.dtb"
 
+ROOTDIR = "\\".join(path.abspath(__file__).split("\\")[:-1])
+
 def create_app():
 	app = Flask(__name__)
 
@@ -27,7 +29,7 @@ def create_app():
 	app.register_blueprint(portfolio_views, subdomain = "portfolio") # Registers views with the app
 	app.register_blueprint(portfolio_auth, subdomain = "portfolio") # Registers auth with the app
 
-	from .models.models import User, Note # runs to define parameters for database
+	from .models.models import User # runs to define parameters for database
 
 	create_database(app = app)
 
