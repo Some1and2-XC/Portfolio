@@ -72,3 +72,8 @@ def kyros_demo():
 			img, _ = RunKyros(dict(formdata))
 
 	return render_template("portfolio-program-001-kyros.html", user = current_user, image=img)
+
+@portfolio_views.route("/mnist", methods = ["GET"])
+def mnist_demo():
+	# Function for mnist classification endpoint
+	return render_template("portfolio-program-002-mnist.html", user = current_user)

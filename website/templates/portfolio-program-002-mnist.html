@@ -1,0 +1,26 @@
+{% extends "portfolio-program-000-base.html" %}
+{% block title %}MNIST Image Classification{% endblock %}
+{% block program_title %}Program for Classifying the MNIST Image Datase{% endblock %}
+{% block program_github_url %}https://github.com/Some1and2-XC/MINST-Image-Classification{% endblock %}
+{% block program_color %}#d6b0ff{% endblock %}
+
+{% block program_content %}
+<div align="center">
+	<h2>Image Classification</h2>
+	<hr>
+	<div class="d-flex flex-column">
+		{% for i in range(28) %}
+			<div class="d-flex flex-row">
+				{% for j in range(28) %}
+					{% if (i + j) % 2 == 0 %}
+					<div style="width: 1rem; height: 1rem; background-color: black;">
+					{% else %}
+					<div style="width: 1rem; height: 1rem; background-color: white;">
+					{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
