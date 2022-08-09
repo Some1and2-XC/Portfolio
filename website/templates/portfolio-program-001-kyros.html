@@ -8,6 +8,10 @@
 	<div align="center">
 		{% if image %}
 			<form method="POST" style="width: 95%; border-width: 2px; border-color: black; border-collapse: collapse; border-style: solid; padding: 2rem; margin-bottom: 10rem; ">
+				{% if user.is_authenticated %}
+					<h3>Image Settings</h3>
+					<code>{{ user.Kyros_Settings[0].settings }}</code>
+				{% endif %}
 				<div class="d-flex flex-row justify-content-center" style="padding: 2rem;">
 					<div class="d-flex flex-column">
 						<input type="range" id="cj" name="vert" value="0" min="-50" max="50" orient="vertical" style="height: calc(100% - 21px">

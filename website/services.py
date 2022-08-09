@@ -51,8 +51,8 @@ def RunKyros(args: dict, BonusSet = {}):
 	f.SetAll(settings = settings, clr = c)
 
 	if BonusSet:
-		BonusSet["x"] = BonusSet["x"] * f.SizeX / 200
-		BonusSet["y"] = BonusSet["y"] * int((f.BoxRange[0][1] / f.BoxRange[0][0]) * f.SizeX) / 200 # SizeY Isn't set so it is required that this is used
+		BonusSet["x"] = BonusSet["x"] * f.SizeX / 100
+		BonusSet["y"] = BonusSet["y"] * int((f.BoxRange[0][1] / f.BoxRange[0][0]) * f.SizeX) / 100 # SizeY Isn't set so it is required that this is used
 
 	f.eval(**BonusSet)
 
