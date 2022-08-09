@@ -7,9 +7,9 @@ from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
-auth = Blueprint("auth", __name__)
+portfolio_auth = Blueprint("portfolio_auth", __name__)
 
-@auth.route("/login", methods=["GET", "POST"])
+@portfolio_auth.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == "POST":
 		email = request.form.get("email")
@@ -27,9 +27,9 @@ def login():
 			flash("Email does not exist. ", category = "error")
 
 
-	return render_template("login.html", user = current_user)
+	return render_template("portfolio-auth-1-login.html", user = current_user)
 
-@auth.route("/sign-up", methods=["GET", "POST"])
+@portfolio_auth.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
 	if request.method == "POST":
 		email = request.form.get("email")
@@ -59,10 +59,10 @@ def sign_up():
 	if request.method == "GET":
 		...
 
-	return render_template("sign_up.html", user = current_user)
+	return render_template("portfolio-auth-0-sign_up.html", user = current_user)
 
-@auth.route("/logout")
+@portfolio_auth.route("/logout")
 @login_required
 def logout():
 	logout_user()
-	return redirect(url_for("auth.login"))
+	return redirect(url_for("portfolio_auth.login"))

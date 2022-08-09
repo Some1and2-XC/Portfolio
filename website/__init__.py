@@ -20,17 +20,19 @@ def create_app():
 	db.init_app(app)
 
 	from .routes.views import views
-	from .routes.auth import auth
+	from .routes.portfolio_views import portfolio_views
+	from .routes.portfolio_auth import portfolio_auth
 
-	app.register_blueprint(views, subdomain = "portfolio") # Registers views with the app
-	app.register_blueprint(auth, subdomain = "portfolio") # Registers auth with the app
+	app.register_blueprint(views, domain = "/")
+	app.register_blueprint(portfolio_views, subdomain = "portfolio") # Registers views with the app
+	app.register_blueprint(portfolio_auth, subdomain = "portfolio") # Registers auth with the app
 
 	from .models.models import User, Note # runs to define parameters for database
 
 	create_database(app = app)
 
 	login_manager = LoginManager()
-	login_manager.login_view = "auth.login"
+	login_manager.login_view = "portfolio_auth.login"
 	login_manager.init_app(app) # tells which app we are using
 
 	@login_manager.user_loader

@@ -13,6 +13,12 @@
 	margin-top: 8rem;
 }
 
+/*Elements*/
+
+h1 {
+	font-size: 5rem !important;
+}
+
 /*Homepage Styles*/
 
 .Homepage-background {
@@ -36,12 +42,6 @@
 .Homepage-about-icon-sm {
 	color: white;
 	font-size: 1em;
-}
-
-/*Elements*/
-
-h1 {
-	font-size: 5rem !important;
 }
 
 @media (max-width: 600px) {
